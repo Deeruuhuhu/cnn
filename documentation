@@ -1,0 +1,277 @@
+# CNN (Convolutional Neural Network) for Image Classification
+
+## Complete Documentation + Coding Implementation
+
+---
+
+# 1. Introduction to CNN
+
+A **Convolutional Neural Network (CNN)** is a deep learning model mainly used for image recognition, classification, object detection, and computer vision tasks.
+
+Unlike traditional neural networks, CNNs automatically detect important features such as:
+
+* Edges
+* Shapes
+* Textures
+* Patterns
+
+## Real-world Applications:
+
+* Face recognition
+* Self-driving cars
+* Medical image diagnosis
+* Animal classification
+* Security surveillance
+
+---
+
+# 2. Why CNN for Images?
+
+Images contain spatial relationships between pixels.
+
+Example:
+A cat image is not just random pixels — ears, eyes, whiskers, and shape matter.
+
+CNN preserves these relationships using:
+
+### Convolution + Pooling
+
+This makes CNN much more effective than normal ANN for image tasks.
+
+---
+
+# 3. CNN Architecture Overview
+
+## Basic Flow:
+
+**Input Image → Convolution → ReLU → Pooling → Flatten → Dense Layer → Output**
+
+---
+
+# 4. Layers in CNN
+
+---
+
+## A) Input Layer
+
+This is the image given to the model.
+
+### Example:
+
+For CIFAR-10:
+
+```python id="w7m2xc"
+32 x 32 x 3
+```
+
+### Meaning:
+
+* 32 = width
+* 32 = height
+* 3 = RGB channels
+
+---
+
+# B) Convolution Layer
+
+This is the core feature extraction layer.
+
+A small filter (kernel) slides over the image to detect:
+
+* Edges
+* Curves
+* Colors
+* Textures
+
+### Example:
+
+```python id="g4k8pt"
+Conv2D(32, (3,3))
+```
+
+### Meaning:
+
+* 32 filters
+* Filter size = 3×3
+
+### Output:
+
+Feature maps
+
+---
+
+## C) ReLU Activation Function
+
+Adds non-linearity.
+
+### Formula:
+
+```python id="r2f7vn"
+f(x) = max(0, x)
+```
+
+### Why:
+
+Negative values become 0, positive values stay.
+
+### Benefit:
+
+Helps model learn complex patterns.
+
+---
+
+# D) Pooling Layer
+
+Reduces image size while keeping important features.
+
+### MaxPooling:
+
+Takes maximum value from a region.
+
+### Example:
+
+```python id="x1n5yb"
+MaxPooling2D((2,2))
+```
+
+### Benefit:
+
+* Reduces computation
+* Prevents overfitting
+* Keeps strongest features
+
+---
+
+# E) Flatten Layer
+
+Converts 2D feature maps into 1D vector.
+
+### Example:
+
+```python id="p9t3wl"
+Flatten()
+```
+
+### Why:
+
+Dense layers need 1D input.
+
+---
+
+# F) Dense Layer (Fully Connected Layer)
+
+Acts like traditional neural network.
+
+### Purpose:
+
+Final classification
+
+### Example:
+
+```python id="m6v1zr"
+Dense(64, activation='relu')
+```
+
+---
+
+# G) Output Layer
+
+Produces final prediction.
+
+### Example:
+
+```python id="s4q8kh"
+Dense(10, activation='softmax')
+```
+
+### Why Softmax:
+
+Returns probability for each class.
+
+Example:
+
+* Cat = 92%
+* Dog = 4%
+* Bird = 2%
+
+---
+
+# 5. Working of CNN Step-by-Step
+
+## Step 1:
+
+Input image enters model
+
+## Step 2:
+
+Convolution extracts features
+
+## Step 3:
+
+ReLU activates important values
+
+## Step 4:
+
+Pooling reduces dimensions
+
+## Step 5:
+
+Flatten converts to vector
+
+## Step 6:
+
+Dense layer learns classification
+
+## Step 7:
+
+Softmax predicts class
+
+---
+
+# 6. Loss Function
+
+For multi-class classification:
+
+```python id="n5w2rm"
+sparse_categorical_crossentropy
+```
+
+### Purpose:
+
+Measures prediction error.
+
+---
+
+# 7. Optimizer
+
+### Adam Optimizer:
+
+```python id="v8x4pt"
+Adam(learning_rate=0.001)
+```
+
+### Purpose:
+
+Adjusts weights to minimize loss.
+
+---
+
+# 8. Dataset Used: CIFAR-10
+
+Contains 60,000 images across 10 classes:
+
+* Airplane
+* Automobile
+* Bird
+* Cat
+* Deer
+* Dog
+* Frog
+* Horse
+* Ship
+* Truck
+
+---
+
+# 9. Complete CNN Code Implementation
+
